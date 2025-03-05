@@ -1,7 +1,7 @@
 
 import { hash, verify } from 'argon2'
-import User from '../user/user.model.js'
-import {generateJWT} from '../helpers/generate-jwt.js'
+import User from '../usuario/user.model.js'
+import {generateJWT} from '../helpers/jwt-validator.js'
 
 
 export const register = async (req, res) => {

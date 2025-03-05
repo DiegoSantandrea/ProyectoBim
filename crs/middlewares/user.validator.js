@@ -1,8 +1,8 @@
 import { body, param } from "express-validator";
 import { correoExists, userExists } from "../helpers/db-validator.js";
-import { validarCampos } from "./validar-campos.js";
-import { handleErrors } from "./handleErrors.js";
-import { validateJWT } from "./validate-jwt.js";
+import { validateFields } from "./validate-fields.js";
+import { handleErrors } from "./handle-errors.js";
+import { generateJWT } from "../helpers/jwt-validator.js";
 import { hasRoles } from "./validate-roles.js";
 
 export const registerValidator = [
@@ -17,12 +17,12 @@ export const registerValidator = [
         minNumbers: 1,
         minSymbols: 1
     }),*/
-    validarCampos,
+    validateFields,
     handleErrors
 ]
 
 export const crearUsuarioValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN"),
     body("nombre").notEmpty().withMessage("El nombre es requerido"),
     body("correo").notEmpty().withMessage("El email es requerido"),
@@ -35,37 +35,37 @@ export const crearUsuarioValidator = [
         minNumbers: 1,
         minSymbols: 1
     }),*/
-    validarCampos,
+    validateFields,
     handleErrors
 ]
 
 export const loginValidator = [
     body("correo").isEmail().withMessage("Correo en formato invalido"),
-    validarCampos,
+    validateFields,
     handleErrors
 ];
 
 export const actualizarUsuarioValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("CLIENT", "ADMIN"),
-    validarCampos,
+    validateFields,
     handleErrors
 ]
 
 export const actualizarAdminValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN"),
-    validarCampos,
+    validateFields,
     handleErrors
 ]
 
 export const eliminarUsuarioModoAdminValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN"),
     param("uid").isMongoId().withMessage("No es un ID válido de MongoDB")
 ]
 
 export const eliminarUsuarioValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN")
 ]

@@ -5,9 +5,9 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
-import apiLimiter from "../src/middlewares/rate-limit-validator.js";
-import authRoutes from "../src/auth/auth.routes.js"
-import userRoutes from "../src/user/user.routes.js"
+import apiLimiter from "../crs/middlewares/rate-limit-validator.js";
+import authRoutes from "../crs/auth/auth.routes.js";
+import usuarioRoutes from "../crs/usuario/user.routes.js"; // Corrected path
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -20,7 +20,7 @@ const middlewares = (app) => {
 
 const routes = (app) =>{
     app.use("/proyectoBim/v1/auth", authRoutes)
-    app.use("/proyectoBim/v1/user", userRoutes)
+    app.use("/proyectoBim/v1/Usuario", usuarioRoutes)
 }
 
 const conectarDB = async () =>{
