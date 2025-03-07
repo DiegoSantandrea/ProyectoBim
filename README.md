@@ -16,11 +16,11 @@ cada carpeta con su modelo controller y routes
 -funcion que es estabel cio ahi basicamente como eliminar agregar actualizar etc.
 
 -----------------------------------------------------------------------------------------------------------------------
-  -##credenciales del admin 
-  -#nombre: "Admin",
-  -#apellido: "PorDefecto",
-  -#username: "admin",
-  -#correo: "admin@gmail.com",
-  -#contra: "admin",
-  -#rol: "ADMIN",
-  -#telefono: "12345678"
+- ##credenciales del admin 
+- #nombre: "Admin",
+- #apellido: "PorDefecto",
+- #username: "admin",
+- #correo: "admin@gmail.com",
+- #contra: "admin",
+- #rol: "ADMIN",
+- #telefono: "12345678"
