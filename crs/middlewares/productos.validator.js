@@ -2,14 +2,14 @@
 import { body, param } from "express-validator";
 import { validateFields } from "./validate-fields.js";
 import { handleErrors } from "./handle-errors.js";
-import { validateJWT } from "./validate-jwt.js";
 import { hasRoles } from "./validate-roles.js";
 import { categoryExists } from "../helpers/db-validator.js";
 import { productExists } from "../helpers/db-validator.js";
 import { deleteFileOnError } from "./delete-file-on-error.js";
+import { generateJWT } from "../helpers/jwt-validator.js";
 
 export const createProductValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     body("name").notEmpty().withMessage("Name is required"),
     body("price").notEmpty().withMessage("Price is required"),
@@ -23,14 +23,14 @@ export const createProductValidator = [
 ]
 
 export const getProductsValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE", "USER_ROLE"),
     validateFields,
     handleErrors
 ]
 
 export const getProductValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     param("pid").notEmpty().isMongoId().withMessage("Invalid product ID"),
     param("pid").custom(productExists),
@@ -39,7 +39,7 @@ export const getProductValidator = [
 ]
 
 export const editProductValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     body("category").optional().isMongoId().withMessage("Invalid category ID").custom(categoryExists),
     validateFields,
@@ -47,7 +47,7 @@ export const editProductValidator = [
 ]
 
 export const updateProductPictureValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     param("pid").notEmpty().isMongoId().withMessage("Invalid product ID"),
     param("pid").custom(productExists),
@@ -58,21 +58,21 @@ export const updateProductPictureValidator = [
 ]
 
 export const getOutOfStockProductsValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     validateFields,
     handleErrors
 ]
 
 export const getBestSellingProductsValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     validateFields,
     handleErrors
 ]
 
 export const filterProductsValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
     body("category").optional().isMongoId().withMessage("Invalid category ID").custom(categoryExists),
     validateFields,
@@ -80,7 +80,7 @@ export const filterProductsValidator = [
 ]
 
 export const deleteProductValidator = [
-    validateJWT,
+    generateJWT,
     hasRoles("ADMIN_ROLE"),
     body("category").optional().isMongoId().withMessage("Invalid category ID").custom(categoryExists),
     validateFields,

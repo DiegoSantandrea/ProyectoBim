@@ -1,0 +1,471 @@
+{
+  "info": {
+    "name": "ProyectoBim API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Usuario",
+      "item": [
+        {
+          "name": "Registrar Usuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"correo\": \"\",\n  \"contra\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/usuario/registrar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuario", "registrar"]
+            }
+          }
+        },
+        {
+          "name": "Modificar Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"correo\": \"\",\n  \"contra\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/usuario/modificar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuario", "modificar"]
+            }
+          }
+        },
+        {
+          "name": "Modificar Modo Admin",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/usuario/modificar-modo-admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuario", "modificar-modo-admin"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar Usuario Modo Admin",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuario/desactivar-modo-admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuario", "desactivar-modo-admin"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/usuario/desactivar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "usuario", "desactivar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Crear Producto",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"description\": \"\",\n  \"price\": 0,\n  \"stock\": 0,\n  \"category\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos/crear",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "crear"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Producto",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/:pid",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", ":pid"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Producto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"description\": \"\",\n  \"price\": 0,\n  \"stock\": 0,\n  \"category\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos/:pid",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", ":pid"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Imagen del Producto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/:pid/actualizar-imagen",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", ":pid", "actualizar-imagen"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Productos Sin Stock",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/sin-stock",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "sin-stock"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Productos Más Vendidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/mas-vendidos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "mas-vendidos"]
+            }
+          }
+        },
+        {
+          "name": "Filtrar Productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/filtrar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "filtrar"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Producto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/:pid/eliminar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", ":pid", "eliminar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Factura",
+      "item": [
+        {
+          "name": "Confirmar Compra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nit\": \"\",\n  \"address\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/factura/confirmar-compra",
+              "host": ["{{base_url}}"],
+              "path": ["api", "factura", "confirmar-compra"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Compras",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/factura/compras",
+              "host": ["{{base_url}}"],
+              "path": ["api", "factura", "compras"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Factura por Usuario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/factura/usuario/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["api", "factura", "usuario", ":uid"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categoria",
+      "item": [
+        {
+          "name": "Agregar Categoria",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categoria/agregar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categoria", "agregar"]
+            }
+          }
+        },
+        {
+          "name": "Listar Categorias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/categoria/listar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categoria", "listar"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Categoria",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categoria/:cid/actualizar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categoria", ":cid", "actualizar"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Categoria",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/categoria/:cid/eliminar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categoria", ":cid", "eliminar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carrito",
+      "item": [
+        {
+          "name": "Agregar Producto al Carrito",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idProduct\": \"\",\n  \"quantity\": 0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/carrito/agregar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "carrito", "agregar"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Items del Carrito",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/carrito",
+              "host": ["{{base_url}}"],
+              "path": ["api", "carrito"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Producto del Carrito",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/carrito/:idProduct/eliminar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "carrito", ":idProduct", "eliminar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Registrar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"\",\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/registrar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "registrar"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"\",\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Registrar Usuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"apellido\": \"\",\n  \"correo\": \"\",\n  \"contra\": \"\",\n  \"telefono\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/registrar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "user", "registrar"]
+            }
+          }
+        },
+        {
+          "name": "Modificar Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"apellido\": \"\",\n  \"correo\": \"\",\n  \"contra\": \"\",\n  \"telefono\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/modificar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "user", "modificar"]
+            }
+          }
+        },
+        {
+          "name": "Modificar Modo Admin",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rol\": \"ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/modificar-modo-admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "user", "modificar-modo-admin"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar Usuario Modo Admin",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/user/desactivar-modo-admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "user", "desactivar-modo-admin"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar Usuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/user/desactivar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "user", "desactivar"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 import User from "../usuario/user.model.js";
+import Category from "../categoria/categoria.model.js"
+import Product from "../productos/productos.model.js"
 
 export const correoExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -26,5 +28,19 @@ export const telephoneExists = async (telephone = "") => {
     const existe = await User.findOne({ telephone })
     if (existe) {
         throw new Error(`User: ${telephone}, is already registered`)
+    }
+}
+
+export const categoryExists = async (name = "") => {
+    const existe = await Category.findOne({ name })
+    if (existe) {
+        throw new Error(`Category: ${name}, is already registered`)
+    }
+}
+
+export const productExists = async (pid = " ") => {
+    const product = await Product.findById(pid)
+    if(!product){
+        throw new Error("The product with the provided ID does not exist")
     }
 }

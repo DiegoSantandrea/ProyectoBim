@@ -7,7 +7,10 @@ import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
 import apiLimiter from "../crs/middlewares/rate-limit-validator.js";
 import authRoutes from "../crs/auth/auth.routes.js";
-import usuarioRoutes from "../crs/usuario/user.routes.js"; // Corrected path
+import usuarioRoutes from "../crs/usuario/user.routes.js"; 
+import categoriaRoutes from "../crs/categoria/categoria.routes.js";
+import productosRoutes from "../crs/productos/productos.routes.js";
+import carritogRoutes from "../crs/carrito/carrito.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -21,6 +24,9 @@ const middlewares = (app) => {
 const routes = (app) =>{
     app.use("/proyectoBim/v1/auth", authRoutes)
     app.use("/proyectoBim/v1/Usuario", usuarioRoutes)
+    app.use("/proyectoBim/v1/categoria", categoriaRoutes)
+    app.use("/proyectoBim/v1/productos", productosRoutes)
+    app.use("/proyectoBim/v1/carrito", carritogRoutes)
 }
 
 const conectarDB = async () =>{

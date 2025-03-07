@@ -1,5 +1,5 @@
 import { hash, verify } from 'argon2';
-import Usuarios from "./user.model.js"
+import User from "./user.model.js"
 
 export const registrarUsuario = async (req, res) => {
     try {
@@ -7,7 +7,7 @@ export const registrarUsuario = async (req, res) => {
         const encryptedPassword = await hash(data.contra);
         data.contra = encryptedPassword;
         
-        const user = await Usuarios.create(data);
+        const user = await User.create(data);
         
         return res.status(201).json({
             message: "Usuario registrado exitosamente",
@@ -28,7 +28,7 @@ export const modificarUsuario = async (req, res) => {
         const { usuario } = req;
         const data = req.body;
 
-        const existingUser = await Usuarios.findById(usuario._id);
+        const existingUser = await User.findById(usuario._id);
         if (!existingUser) {
             return res.status(404).json({
                 success: false,
@@ -44,7 +44,7 @@ export const modificarUsuario = async (req, res) => {
             });
         }
 
-        const usuarioActualizado = await Usuarios.findOneAndUpdate(
+        const usuarioActualizado = await User.findOneAndUpdate(
             usuario, { $set: data }, { new: true }
         );
 
@@ -72,7 +72,7 @@ export const modificarModoAdmin = async (req, res) => {
     try {
         const { uid } = req.params;
         const data = req.body;
-        const adminActualizar = await Usuarios.findOneAndUpdate(
+        const adminActualizar = await User.findOneAndUpdate(
             { _id: uid, rol: { $ne: "ADMIN" } }, { $set: data }, { new: true }
         );
 
@@ -101,7 +101,7 @@ export const desactivarUsuarioModoAdmin = async (req, res) => {
     try {
         const { uid } = req.params
 
-        const usuarioParaEliminar = await Usuarios.findOneAndUpdate(
+        const usuarioParaEliminar = await User.findOneAndUpdate(
             { _id: uid, rol: { $ne: "ADMIN" } }, { status: false }, { new: true }
         );
 
@@ -129,7 +129,7 @@ export const desactivarUsuarioModoAdmin = async (req, res) => {
 export const desactivarUsuario = async (req, res) => {
     try {
         const { usuario } = req;
-        const eliminarUsuario = await Usuarios.findOneAndUpdate(usuario, { status: false }, { new: true })
+        const eliminarUsuario = await User.findOneAndUpdate(usuario, { status: false }, { new: true })
         if (!eliminarUsuario) {
             return res.status(404).json({
                 success: false,
